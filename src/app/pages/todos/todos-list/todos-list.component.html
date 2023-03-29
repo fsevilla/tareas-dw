@@ -1,0 +1,21 @@
+<h3>Lista de Tareas</h3>
+
+<!-- <form (submit)="filtrar()">
+    <input name="buscar" type="text" [(ngModel)]="buscar">
+    <button>Buscar</button>
+</form> -->
+
+<input type="text" [(ngModel)]="buscar" (keyup)="filtrar()">
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Titulo</th>
+        <th>Status</th>
+    </tr>
+    <tr *ngFor="let item of tareasFiltradas">
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.completed}}</td>
+    </tr>
+</table>
