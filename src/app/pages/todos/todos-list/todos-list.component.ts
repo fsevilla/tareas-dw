@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DataListColumn } from 'src/app/shared/interfaces/data-list-column';
+import { Tarea } from 'src/app/shared/interfaces/tarea';
 import { TodoService } from 'src/app/shared/services/todo.service';
 
 @Component({
@@ -9,11 +11,18 @@ import { TodoService } from 'src/app/shared/services/todo.service';
 })
 export class TodosListComponent implements OnInit {
 
-  tareas: any[] = [];
-  tareasFiltradas: any[] = [];
+  tareas: Tarea[] = [];
 
-  buscar: string = '';
+  tareaSeleccionada: Tarea = {
+    title: ''
+  };
 
+  columnas: DataListColumn[] = [
+    { header: 'ID', property: 'id' },
+    { header: 'Titulo', property: 'title' },
+    { header: 'Terminada', property: 'completed' }
+  ]
+  
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
@@ -22,10 +31,9 @@ export class TodosListComponent implements OnInit {
 
   traerTareas() {
     this.todoService.buscar().subscribe({
-      next: (response) => {
+      next: (response: Tarea[]) => {
         console.log('Respuesta: ', response);
         this.tareas = response;
-        this.tareasFiltradas = this.tareas;
       },
       error: (err) => {
         console.log('Error: ', err);
@@ -33,13 +41,16 @@ export class TodosListComponent implements OnInit {
     });
   }
 
-  filtrar() {
-    const buscar = this.buscar.toLowerCase();
-    this.tareasFiltradas = this.tareas.filter(item => {
-      return item.title.toLowerCase().includes(buscar);
-    })
+  seleccionarTarea(tarea: Tarea) {
+    console.log('Seleccionaste una tarea ' + tarea.id, tarea)
+    this.tareaSeleccionada = tarea;
   }
 
+  limpiarTarea() {
+    this.tareaSeleccionada = {
+      title: ''
+    }
+  }
 }
 
 

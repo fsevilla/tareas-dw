@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+import { MaterialModule } from './modules/material/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
@@ -14,6 +15,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { TodosListComponent } from './pages/todos/todos-list/todos-list.component';
 import { TodoDetailsComponent } from './pages/todos/todo-details/todo-details.component';
 import { CreateTodoComponent } from './pages/todos/create-todo/create-todo.component';
+import { DataListComponent } from './shared/components/data-list/data-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,13 +29,16 @@ import { CreateTodoComponent } from './pages/todos/create-todo/create-todo.compo
     NotFoundComponent,
     TodosListComponent,
     TodoDetailsComponent,
-    CreateTodoComponent
+    CreateTodoComponent,
+    DataListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,23 @@
+<input type="text" [(ngModel)]="buscar" (keyup)="filtrar()">
+
+<!-- <table>
+    <tr>
+        <th *ngFor="let col of columns">{{col.header}}</th>
+    </tr>
+    <tr *ngFor="let item of itemsFiltrados" (click)="seleccionarItem(item)" [ngClass]="{'seleccionado':itemSeleccionado.id === item.id}">
+        <td *ngFor="let col of columns">{{item[col.property]}}</td>
+    </tr>
+</table> -->
+
+
+<table mat-table [dataSource]="itemsFiltrados" class="mat-elevation-z8">
+
+    <ng-container [matColumnDef]="col.header" *ngFor="let col of columns"> 
+      <th mat-header-cell *matHeaderCellDef> {{col.header}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[col.property]}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="seleccionarItem(row)"></tr>
+
+</table>

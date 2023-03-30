@@ -1,0 +1,11 @@
+#fila > div {
+    width: 50%;
+    float: left;
+}
+
+#fila::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+// clearfix

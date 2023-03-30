@@ -5,17 +5,23 @@
     <button>Buscar</button>
 </form> -->
 
-<input type="text" [(ngModel)]="buscar" (keyup)="filtrar()">
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Titulo</th>
-        <th>Status</th>
-    </tr>
-    <tr *ngFor="let item of tareasFiltradas">
-        <td>{{item.id}}</td>
-        <td>{{item.title}}</td>
-        <td>{{item.completed}}</td>
-    </tr>
-</table>
+<div id="fila">
+    <div>
+        <app-data-list (onSelected)="seleccionarTarea($event)" [items]="tareas" [columns]="columnas" [item]="tareaSeleccionada"></app-data-list>
+    </div>
+    <div>        
+        <h2>Datos de la Tarea</h2>
+        <ng-container *ngIf="tareaSeleccionada.title">
+            <strong>Titulo: </strong> <span>{{tareaSeleccionada.title}}</span><br>
+            <strong>Status: </strong> <span>{{tareaSeleccionada.completed ? 'Terminada' : 'Pendiente'}}</span>
+            <br><br>
+
+            <button mat-raised-button color="primary" (click)="limpiarTarea()">Limpiar</button>
+            
+        </ng-container>
+        <div *ngIf="!tareaSeleccionada.title">Selecciona una tarea</div>
+    </div>
+</div>
+
+

@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+
+    td {
+        cursor: pointer;
+    }
+
+    tr:nth-child(2n + 1) {
+        background-color: #f0f0f0;
+    }
+
+    tr:hover {
+        background-color: lightblue;   
+    }
+
+    tr.seleccionado {
+        background-color: aqua;
+    }
+}
