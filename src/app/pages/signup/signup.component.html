@@ -1,25 +1,32 @@
-<form>
+<form [formGroup]="form" (submit)="crearUsuario()">
+    <mat-form-field>
+        <mat-label>Nombre: </mat-label>
+        <input matInput type="text" name="nombre" placeholder="Nombre completo" formControlName="nombre">
+        <mat-error *ngIf="form.controls['nombre'].errors && form.controls['nombre'].errors['required']">Este campo es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Correo: </mat-label>
+        <input matInput type="email" name="correo" placeholder="ejemplo@correo.com" formControlName="correo">
+        <mat-error *ngIf="form.controls['correo'].errors && form.controls['correo'].errors['required']">Este campo es requerido</mat-error>
+        <mat-error *ngIf="form.controls['correo'].errors && form.controls['correo'].errors['email']">El correo es invalido</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Contraseña: </mat-label>
+        <input matInput type="password" name="pass" formControlName="password">
+        <mat-error *ngIf="form.controls['password'].errors && form.controls['password'].errors['required']">Este campo es requerido</mat-error>
+        <mat-error *ngIf="form.controls['password'].errors && form.controls['password'].errors['minlength']">La contraseña debe tener al menos 8 caracteres</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Confirmar Contraseña: </mat-label>
+        <input matInput type="password" name="confirmar" formControlName="confirmar">
+        <mat-error *ngIf="form.controls['confirmar'].errors && form.controls['confirmar'].errors['required']">Este campo es requerido</mat-error>
+        <mat-error *ngIf="form.controls['confirmar'].errors && form.controls['confirmar'].errors['minlength']">La contraseña debe tener al menos 8 caracteres</mat-error>
+    </mat-form-field>
     <div>
-        <label for="nombre">Nombre: </label>
-        <input type="text" name="nombre" placeholder="Nombre completo">
+        <mat-checkbox formControlName="terminos">Acepto los terminos y condiciones</mat-checkbox>
     </div>
     <div>
-        <label for="correo">Correo: </label>
-        <input type="email" name="correo" placeholder="ejemplo@correo.com">
-    </div>
-    <div>
-        <label for="pass">Contraseña: </label>
-        <input type="password" name="pass">
-    </div>
-    <div>
-        <label for="confirmar">Confirmar Contraseña: </label>
-        <input type="password" name="confirmar">
-    </div>
-    <div>
-        <input type="checkbox"> Acepto los terminos y condiciones
-    </div>
-    <div>
-        <button mat-raised-button color="primary">Crear cuenta</button>
+        <button mat-raised-button color="primary" [disabled]="form.invalid">Crear cuenta</button>
     </div>
 </form>
 <p>

@@ -1,4 +1,29 @@
+@import '/src/sass/colores';
+
 form {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
+
+    mat-form-field {
+        width: 100%;
+    }
+
+    // div {
+    //     padding: 6px 0;
+
+    //     label, > input {
+    //         display: block;
+    //         width: 100%;
+    //     }
+
+    // }
+
+    // .error {
+    //     color: $error-color;
+    //     display: none;
+    // }
+
+    // input.ng-dirty.ng-touched ~ .error {
+    //     display: inline;
+    // }
 }

@@ -45,7 +45,7 @@ export class DataListComponent implements OnChanges {
     if(item == this.itemSeleccionado) {
       this.itemSeleccionado = {};
     } else {
-      this.itemSeleccionado = item;
+      this.itemSeleccionado = {...item};
     }
     this.onSelected.emit(this.itemSeleccionado);
   }

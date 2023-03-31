@@ -13,6 +13,7 @@
     <div>        
         <h2>Datos de la Tarea</h2>
         <ng-container *ngIf="tareaSeleccionada.title">
+            <input type="text" [(ngModel)]="tareaSeleccionada.title">
             <strong>Titulo: </strong> <span>{{tareaSeleccionada.title}}</span><br>
             <strong>Status: </strong> <span>{{tareaSeleccionada.completed ? 'Terminada' : 'Pendiente'}}</span>
             <br><br>
