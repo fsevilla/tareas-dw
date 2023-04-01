@@ -1,3 +1,3 @@
 export const environment = {
-    apiUrl: 'https://jsonplaceholderprod.typicode.com/todos'
+    apiUrl: 'https://jsonplaceholder.typicode.com/todos'
 };
