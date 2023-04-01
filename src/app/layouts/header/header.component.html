@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
     <span>Mis Tareas</span>
     <span class="espacio"></span>
-    <a routerLink="login">Iniciar sesion</a>
-    <a routerLink="todos">Tareas</a>
+    <a *ngIf="!loginStatus" routerLink="login">Iniciar sesion</a>
+    <a *ngIf="loginStatus" routerLink="todos">Tareas</a>
+    <a *ngIf="loginStatus" (click)="logout()" routerLink="login">Cerrar sesion</a>
 </mat-toolbar>

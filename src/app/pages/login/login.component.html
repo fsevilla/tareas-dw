@@ -1,6 +1,20 @@
-<p>login works!</p>
 
-<p>
-No tienes una cuenta? <a routerLink="/signup">Registrate aqui</a>
-</p>
+<form (submit)="iniciarSesion()">
+    <mat-form-field>
+        <mat-label>Correo: </mat-label>
+        <input type="email" matInput name="correo" [(ngModel)]="credenciales.email">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Password: </mat-label>
+        <input type="password" matInput name="password" [(ngModel)]="credenciales.password">
+    </mat-form-field>
+    <p class="error" *ngIf="error">Las credenciales no son correctas</p>
+    <div>
+        <button id="submit" mat-raised-button color="primary">Iniciar sesión</button>
+    </div>
+    <p>
+        No tienes una cuenta? <a routerLink="/signup">Registrate aqui</a>
+    </p>
+</form>
+
 

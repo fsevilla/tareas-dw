@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
+import { CustomHttpService } from './custom-http.service';
+
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private customHttp: CustomHttpService ) { }
 
   test(): string {
     return 'hola mundo';
   }
 
   buscar(): Observable<any> {
-    const url: string = 'https://jsonplaceholder.typicode.com/todos';   
-    return this.httpClient.get(url);
+    const headers = {};
+    const url: string = environment.apiUrl;   
+    return this.customHttp.get(url);
   }
+
 }
